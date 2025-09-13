@@ -1,0 +1,38 @@
+set S := Salatiga Semarang Emergency;
+set D := Purwokerto Pekalongan Surakarta KotaSemarang;
+
+param supply :=
+  Salatiga   100
+  Semarang   105
+  Emergency  10 ;
+
+param demand :=
+  Purwokerto    55
+  Pekalongan    90
+  Surakarta     50
+  KotaSemarang  20 ;
+
+# shipping cost matrix (tabular form; safer for copy-paste)
+param ship_cost :
+           Purwokerto Pekalongan Surakarta KotaSemarang :=
+  Salatiga       50         45        35            30
+  Semarang       50         45        35            30
+  Emergency    1000       1000      1000         1000 ;
+
+# flags: real warehouses = 1, emergency = 0
+param is_real :=
+  Salatiga 1
+  Semarang 1
+  Emergency 0 ;
+
+# capacity expansion cost per unit (example values)
+param cap_cost :=
+  Salatiga 40
+  Semarang 25
+  Emergency 0 ;
+
+# expansion upper bounds
+param max_cap_add :=
+  Salatiga 50
+  Semarang 50
+  Emergency 0 ;
